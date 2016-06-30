@@ -21,15 +21,32 @@ public class friday {
 
         for (int i = 0; i < years; i++) {
         	// Check if leap year
-        	if () {
-
+        	int year = 1900+i;
+        	if (year%100==0 && year%400==0) {
+        		months[1] = 29;
+        	}
+        	else if (year%100!=0 && year%4==0) {
+        		months[1] = 29;
+        	}
+        	else {
+        		months[1] = 28;
         	}
         	// Cycle through months
         	for (int j = 0; j < 12; j++) {
-        		onDay += 6;
+        		int temp = onDay;
+        		onDay = (onDay+5)%7;
         		days[onDay]++;
-        		onDay = onDay - 6 + months[j]%7;
+        		onDay = (temp + months[j]%7)%7;
         	}
         }
+
+        for (int i = 0; i < 6; i++) {
+        	out.print(days[i] + " ");
+        	System.out.print(days[i] + " ");
+        }
+        out.println(days[6]);
+        System.out.println(days[6]);
+
+        out.close();
     }
 }
